@@ -6,31 +6,20 @@ import {useEffect} from "react";
 export const Popups = ({children, secretWord}) => {
 
     const trueAnswer = useSelector(state => state.trueAnswer);
+    const infoGame = useSelector(state => state.infoGame)
     const dispatch = useDispatch();
     useEffect(() => {
-        if (trueAnswer === secretWord.length) {
-            const winData = JSON.parse(localStorage.getItem('infoGame'));
-            winData.push({
-                secretWord,
-                status: true,
-                time: new Date()
-            })
-            dispatch({type: 'ADD_LIST', payload: winData})
-            localStorage.setItem('infoGame', JSON.stringify(winData));
-        } else {
-            const loseData = JSON.parse(localStorage.getItem('infoGame'));
-            loseData.push({
-                secretWord,
-                status: false,
-                time: new Date()
-            })
-            dispatch({type: 'ADD_LIST', payload: loseData})
-            localStorage.setItem('infoGame', JSON.stringify(loseData));
-        }
-    })
+        const isWin = trueAnswer === secretWord.length
+        const data = JSON.parse(infoGame);
+        data.push({
+            secretWord,
+            status: isWin,
+            time: new Date()
+        });
+        dispatch({type: 'ADD_LIST', payload: JSON.stringify(data)});
+    }, []);
 
     const handleReset = () => {
-
         window.location.reload();
     }
 

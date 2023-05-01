@@ -1,14 +1,14 @@
-import {createStore} from "redux";
+import { createStore,} from "redux";
+import {persistStore, persistReducer} from "redux-persist";
+import storage from 'redux-persist/lib/storage';
 
-if (JSON.parse(localStorage.getItem('infoGame')) === null) {
-    localStorage.setItem('infoGame', JSON.stringify([]));
-}
 const defaultState = {
     wrong: '',
     trueAnswer: 0,
-    infoGame: JSON.parse(localStorage.getItem('infoGame'))
+    infoGame: '[]',
 
 }
+
 const reducer = (state = defaultState, action) => {
     switch (action.type) {
         case 'ADD_TRUE_ANSWER':
@@ -23,4 +23,12 @@ const reducer = (state = defaultState, action) => {
             return state
     }
 }
-export const store = createStore(reducer)
+const persistConfig = {
+    key: 'root',
+    storage,
+    whitelist: ['infoGame']
+}
+
+const persistedReducer = persistReducer(persistConfig, reducer);
+export let store = createStore(persistedReducer);
+export let persistor = persistStore(store);

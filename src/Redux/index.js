@@ -6,7 +6,10 @@ const defaultState = {
     wrong: '',
     trueAnswer: 0,
     infoGame: '[]',
-
+    coins: 0,
+    repeatWord: '[]',
+    boughtElement: '[]',
+    setStyle: '{}',
 }
 
 const reducer = (state = defaultState, action) => {
@@ -19,6 +22,16 @@ const reducer = (state = defaultState, action) => {
             return {...state, infoGame: action.payload}
         case 'BREAK_WRONG_LETTER':
             return {...state, wrong: '', trueAnswer: 0}
+        case 'WIN_MONEY':
+            return {...state, coins: state.coins + action.payload}
+        case 'ADD_REPEAT_WORD':
+            return {...state, repeatWord: action.payload}
+        case 'BUY_ELEMENT':
+            return {...state, coins: state.coins - action.payload}
+        case 'ADD_ELEMENT_TO_LIBRARY':
+            return {...state, boughtElement: action.payload}
+        case 'SET_ACTUAL_STYLE':
+            return {...state, setStyle: action.payload}
         default:
             return state
     }
@@ -26,7 +39,7 @@ const reducer = (state = defaultState, action) => {
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['infoGame']
+    whitelist: ['infoGame', 'coins', 'repeatWord', 'boughtElement', 'setStyle']
 }
 
 const persistedReducer = persistReducer(persistConfig, reducer);

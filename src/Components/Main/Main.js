@@ -5,16 +5,20 @@ import {useSelector} from "react-redux";
 import {Popups} from "Components/Popup/Popup";
 import './style.css'
 import 'reactjs-popup/dist/index.css';
+import {Header} from "Components/Header/Header";
 
 export const Main = () => {
-    const wrong = useSelector(state => state.wrong)
+    const wrong = useSelector(state => state.wrong);
+    const setStyle = JSON.parse(useSelector(state => state.setStyle));
     const trueAnswer = useSelector(state => state.trueAnswer);
-    const secrets = ['Dima', 'Sasha', 'Kolyia', 'Pivo', 'Skelet', 'Vanila']
+    const secrets = ['Dima', 'Sasha', 'Kolyia', 'Pivo', 'Skelet', 'Vanila', 'Hello', 'Bye', 'Good', 'Bad']
     const [letter, setLetter] = useState('');
     const [secretWord] = useState(secrets[Math.floor(Math.random() * secrets.length)]);
     const [isWrong, setIsWrong] = useState(false);
 
     useEffect(() => {
+        document.body.style.background = setStyle.background;
+        document.body.style.color = setStyle.color;
         if (Math.round(wrong.length / 2) === 6) {
             setIsWrong(true);
         } else {
@@ -29,6 +33,7 @@ export const Main = () => {
 
     return (
         <div>
+            <Header/>
             <h2>Hangman</h2>
             <p>Find the hidden word - Enter a letter</p>
             <div className='cartoon'>

@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {Provider} from "react-redux";
+import {Provider, useSelector} from "react-redux";
 import {store, persistor} from "./Redux/index";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {Main} from "Components/Main/Main";
 import {Status} from "Components/Statistic/Status/Status";
 import {PersistGate} from "redux-persist/integration/react";
+import {Shop} from "Components/Shop/Shop";
 const router = createBrowserRouter([
     {
         path: '/',
@@ -14,8 +15,13 @@ const router = createBrowserRouter([
     {
         path: '/status',
         element: <Status/>
+    },
+    {
+        path: '/shop',
+        element: <Shop/>
     }
 ])
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <Provider store={store}>

@@ -27,8 +27,11 @@ export const Canvas = ({wrong}) => {
     useEffect(() => {
         const canvas = canvasRef.current;
         const context = canvas.getContext('2d');
-        context.fillStyle = wrongCubes[wrong]?.fillStyle;
-        context.fillRect(wrongCubes[wrong]?.fillRect, 0, 50, 50)
+        if(wrong >= 2 && wrong <=5){
+       const {fillStyle, fillRect} = wrongCubes[wrong];
+        context.fillStyle = fillStyle;
+        context.fillRect(fillRect, 0, 50, 50)
+        }
     }, [wrong])
     return (<canvas ref={canvasRef}/>)
 }

@@ -42,6 +42,7 @@ export const Popups = ({children, secretWord}) => {
             {children}
             <button onClick={handleReset}>Reset game</button>
             <Link to='/status'>Status</Link>
+            <Link to='/shop'>Shop</Link>
         </div>
     </Popup>)
 }

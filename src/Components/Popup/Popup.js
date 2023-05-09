@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {useEffect} from "react";
 
 export const Popups = ({children, secretWord}) => {
-
+    const setStyle = JSON.parse(useSelector(state => state.setStyle));
     const trueAnswer = useSelector(state => state.trueAnswer);
     const infoGame = useSelector(state => state.infoGame);
     const repeatWord = useSelector(state => state.repeatWord);
@@ -38,7 +38,7 @@ export const Popups = ({children, secretWord}) => {
     }
 
     return (<Popup open modal disabled position="right center">
-        <div className='popup'>
+        <div className='popup' style={{color:setStyle.color, background: setStyle.background}}>
             {children}
             <button onClick={handleReset}>Reset game</button>
             <Link to='/status'>Status</Link>

@@ -1,11 +1,11 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Game} from "Components/Statistic/Game/Game";
 import {Link} from "react-router-dom";
 import './style.css'
 
 export const Status = () => {
-
+    const setStyle = JSON.parse(useSelector(state => state.setStyle));
     const infoGame = useSelector(state => state.infoGame);
     const [list, setList] = useState(JSON.parse(infoGame));
     const dispatch = useDispatch();
@@ -21,6 +21,10 @@ export const Status = () => {
     const resetSort = () => {
         setList(JSON.parse(infoGame));
     }
+    useEffect(()=>{
+        document.body.style.background = setStyle.background;
+        document.body.style.color = setStyle.color;
+    },)
     return (<div>
         {infoGame.length &&
             <div className='buttons'>

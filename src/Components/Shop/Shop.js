@@ -1,10 +1,12 @@
 import {Header} from "Components/Header/Header";
 import {useDispatch, useSelector} from "react-redux";
 import {Link} from "react-router-dom";
+import {useEffect} from "react";
 
 export const Shop = () => {
     const boughtElement = JSON.parse(useSelector(state => state.boughtElement));
     const coins = useSelector(state => state.coins);
+    const setStyle = JSON.parse(useSelector(state => state.setStyle));
     const dispatch = useDispatch();
     const SHOP_LIST = [
         {name: 'Black', price: 50, background: 'black', color: 'white'},
@@ -28,6 +30,11 @@ export const Shop = () => {
         document.body.style.color = element.color;
         dispatch({type:'SET_ACTUAL_STYLE', payload: JSON.stringify(element)})
     }
+    useEffect(() =>{
+        document.body.style.background = setStyle.background;
+        document.body.style.color = setStyle.color;
+        },[]
+    )
     return (<div>
         <Header/>
         <Link to='/'>Home </Link>

@@ -3,34 +3,35 @@ import {Inputs} from "Components/Inputs/Inputs";
 import {Canvas} from "Components/Canvas/Canvas";
 import {useSelector} from "react-redux";
 import {Popups} from "Components/Popup/Popup";
+import {Header} from "Components/Header/Header";
+import {ChangeBackgroundColor} from "Components/Functions/ChangeBackgroundColor";
+import {SECRETS} from "Components/Constants/Constants";
 import './style.css'
 import 'reactjs-popup/dist/index.css';
-import {Header} from "Components/Header/Header";
 
 export const Main = () => {
-    const wrong = useSelector(state => state.wrong);
-    const setStyle = JSON.parse(useSelector(state => state.setStyle));
-    const trueAnswer = useSelector(state => state.trueAnswer);
-    const secrets = ['Dima', 'Sasha', 'Kolyia', 'Pivo', 'Skelet', 'Vanila', 'Hello', 'Bye', 'Good', 'Bad']
+    const wrong = useSelector(state => state.rules.wrong);
+    const trueAnswer = useSelector(state => state.rules.trueAnswer);
     const [letter, setLetter] = useState('');
-    const [secretWord] = useState(secrets[Math.floor(Math.random() * secrets.length)]);
+    const [secretWord] = useState(SECRETS[Math.floor(Math.random() * SECRETS.length)]);
+    // UseState need because word rerender after press key
     const [isWrong, setIsWrong] = useState(false);
+    const setStyle = JSON.parse(useSelector(state => state.store.setStyle));
 
     useEffect(() => {
-        document.body.style.background = setStyle.background;
-        document.body.style.color = setStyle.color;
         if (Math.round(wrong.length / 2) === 6) {
             setIsWrong(true);
         } else {
-            const onKeyPress = e => setLetter(e.key);
+            const onKeyPress = e => setLetter(e.key.toLowerCase());
             document.addEventListener('keypress', onKeyPress);
             return () => {
-
                 document.removeEventListener('keypress', onKeyPress);
             }
         }
     }, [letter])
-
+    useEffect(()=>{
+        ChangeBackgroundColor(setStyle);
+    },[])
     return (
         <div>
             <Header/>

@@ -4,10 +4,10 @@ import {Link} from "react-router-dom";
 import {useEffect} from "react";
 
 export const Popups = ({children, secretWord}) => {
-    const setStyle = JSON.parse(useSelector(state => state.setStyle));
-    const trueAnswer = useSelector(state => state.trueAnswer);
-    const infoGame = useSelector(state => state.infoGame);
-    const repeatWord = useSelector(state => state.repeatWord);
+    const setStyle = JSON.parse(useSelector(state => state.store.setStyle));
+    const trueAnswer = useSelector(state => state.rules.trueAnswer);
+    const infoGame = useSelector(state => state.statistics.infoGame);
+    const repeatWord = useSelector(state => state.statistics.repeatWord);
     const listWords = JSON.parse(repeatWord);
     let reward = 0;
     const dispatch = useDispatch();

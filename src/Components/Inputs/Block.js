@@ -1,21 +1,24 @@
 import {useEffect, useState} from "react";
-import './style.css'
 import {useDispatch, useSelector} from "react-redux";
+import './style.css'
 
 export const Block = ({value, letter, secretWord}) => {
-    const dispatch = useDispatch();
+
     const [isChecked, setIsChecked] = useState(false);
-    const wrong = useSelector(state => state.wrong)
+    const wrong = useSelector(state => state.rules.wrong);
+    const dispatch = useDispatch();
+
     useEffect(() => {
         if (!isChecked && letter === value) {
             setIsChecked(true);
-            dispatch({type: 'ADD_TRUE_ANSWER'})
+            dispatch({type: 'ADD_TRUE_ANSWER'});
         } else if (!isChecked && letter !== value && !secretWord.split('').includes(letter)) {
             let word = wrong;
             word += ' ' + letter;
-            dispatch({type: 'CHANGE_WRONG', payload: word})
+            dispatch({type: 'CHANGE_WRONG', payload: word});
         }
-    }, [letter])
+    }, [letter]);
+
     return (
         <div className='block'>
             <p>{isChecked && value}</p>

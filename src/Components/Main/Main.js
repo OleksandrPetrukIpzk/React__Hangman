@@ -5,7 +5,7 @@ import {useSelector} from "react-redux";
 import {Popups} from "Components/Popup/Popup";
 import {Header} from "Components/Header/Header";
 import {ChangeBackgroundColor} from "Components/Functions/ChangeBackgroundColor";
-import {SECRETS} from "Components/Constants/Constants";
+import {MINIMAL_WRONG_COUNT, SECRETS, MAXIMUM_WRONG_NUMBER} from "Components/Constants/Constants";
 import './style.css'
 import 'reactjs-popup/dist/index.css';
 
@@ -19,7 +19,7 @@ export const Main = () => {
     const setStyle = JSON.parse(useSelector(state => state.store.setStyle));
 
     useEffect(() => {
-        if (Math.round(wrong.length / 2) === 6) {
+        if (Math.round(wrong.length / MINIMAL_WRONG_COUNT) === MAXIMUM_WRONG_NUMBER) {
             setIsWrong(true);
         } else {
             const onKeyPress = e => setLetter(e.key.toLowerCase());
@@ -29,16 +29,18 @@ export const Main = () => {
             }
         }
     }, [letter])
+
     useEffect(()=>{
         ChangeBackgroundColor(setStyle);
     },[])
+
     return (
         <div>
             <Header/>
             <h2>Hangman</h2>
             <p>Find the hidden word - Enter a letter</p>
             <div className='cartoon'>
-                <Canvas wrong={Math.round(wrong.length / 2)}/>
+                <Canvas wrong={Math.round(wrong.length / MINIMAL_WRONG_COUNT)}/>
                 <div>
                     <h2>Wrong:</h2>
                     <p>{wrong}</p>

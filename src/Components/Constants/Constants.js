@@ -29,3 +29,9 @@ export const SHOP_LIST = [
     {name: 'Cheep', price: 1, background: 'gray', color: 'white'},
 ]
 export const SECRETS = ['dima', 'sasha', 'kolyia', 'bear', 'skelet', 'vanilla', 'hello', 'bye', 'good', 'bad', 'red','square', 'love', 'open', 'piano', 'melon', 'rad', 'quin', 'king', 'seven', 'think'];
+
+export const MINIMAL_WRONG_COUNT = 2;
+
+export const MAXIMUM_WRONG_COUNT = 5;
+
+export const MAXIMUM_WRONG_NUMBER = 6;

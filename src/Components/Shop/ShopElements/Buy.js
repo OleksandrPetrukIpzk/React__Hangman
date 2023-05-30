@@ -5,9 +5,10 @@ export const Buy = ({element}) => {
     const boughtElement = JSON.parse(useSelector(state => state.store.boughtElement));
     const dispatch = useDispatch();
     const buyElement = (element) => {
-        if (coins > element.price) {
+        const {price} = element;
+        if (coins > price) {
             boughtElement.push(element);
-            dispatch({type: 'BUY_ELEMENT', payload: element.price});
+            dispatch({type: 'BUY_ELEMENT', payload: price});
             dispatch({type: 'ADD_ELEMENT_TO_LIBRARY', payload: JSON.stringify(boughtElement)});
             dispatch({type: 'SET_ACTUAL_STYLE', payload: JSON.stringify(element)})
         }

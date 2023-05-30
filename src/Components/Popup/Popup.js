@@ -1,10 +1,11 @@
-import Popup from "reactjs-popup";
-import {useDispatch, useSelector} from "react-redux";
-import {Link} from "react-router-dom";
 import {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import Popup from "reactjs-popup";
+import {Link} from "react-router-dom";
+import {MINIMAL_WRONG_COUNT} from "Components/Constants/Constants";
 
 export const Popups = ({children, secretWord}) => {
-    const setStyle = JSON.parse(useSelector(state => state.store.setStyle));
+    const {color, background} = JSON.parse(useSelector(state => state.store.setStyle));
     const trueAnswer = useSelector(state => state.rules.trueAnswer);
     const infoGame = useSelector(state => state.statistics.infoGame);
     const repeatWord = useSelector(state => state.statistics.repeatWord);
@@ -16,7 +17,7 @@ export const Popups = ({children, secretWord}) => {
         const isWin = trueAnswer === secretWord.length;
         if (isWin) {
             if (listWords.includes(secretWord)) {
-                reward = Math.ceil(secretWord.length / 2);
+                reward = Math.ceil(secretWord.length / MINIMAL_WRONG_COUNT);
             } else {
                 reward = secretWord.length;
                 listWords.push(secretWord);
@@ -38,7 +39,7 @@ export const Popups = ({children, secretWord}) => {
     }
 
     return (<Popup open modal disabled position="right center">
-        <div className='popup' style={{color:setStyle.color, background: setStyle.background}}>
+        <div className='popup' style={{color: color, background: background}}>
             {children}
             <button onClick={handleReset}>Reset game</button>
             <Link to='/status'>Status</Link>

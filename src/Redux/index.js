@@ -4,6 +4,7 @@ import storage from 'redux-persist/lib/storage';
 import {storeReducer} from "Redux/storeModule";
 import {statisticReducer} from "Redux/statisticsModule";
 import {rulesReducer} from "Redux/rulesModule";
+import {sudokuReducer} from "Redux/sudokuModule";
 
 const persistConfig = {
     key: 'root',
@@ -14,7 +15,8 @@ const persistConfig = {
 const persistedReducer = persistCombineReducers(persistConfig, {
     rules: rulesReducer,
     statistics: statisticReducer,
-    store: storeReducer
+    store: storeReducer,
+    sudoku: sudokuReducer
 });
 
 export let store = createStore(persistedReducer);

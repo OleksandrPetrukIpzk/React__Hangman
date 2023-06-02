@@ -1,7 +1,7 @@
 import {Library} from "Components/Shop/Library/Library";
 import {Header} from "Components/Header/Header";
 import {useEffect} from "react";
-import {ChangeBackgroundColor} from "Components/Functions/ChangeBackgroundColor";
+import {ChangeBackgroundColor} from "Functions/Hangman/ChangeBackgroundColor";
 import {useSelector} from "react-redux";
 
 export const OwnElements = () =>{

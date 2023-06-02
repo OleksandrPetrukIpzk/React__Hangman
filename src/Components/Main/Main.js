@@ -4,8 +4,8 @@ import {Canvas} from "Components/Canvas/Canvas";
 import {useSelector} from "react-redux";
 import {Popups} from "Components/Popup/Popup";
 import {Header} from "Components/Header/Header";
-import {ChangeBackgroundColor} from "Components/Functions/ChangeBackgroundColor";
-import {MINIMAL_WRONG_COUNT, SECRETS, MAXIMUM_WRONG_NUMBER} from "Components/Constants/Constants";
+import {ChangeBackgroundColor} from "Functions/Hangman/ChangeBackgroundColor";
+import {MINIMAL_WRONG_COUNT, SECRETS, MAXIMUM_WRONG_NUMBER} from "Constants/hangman";
 import './style.css'
 import 'reactjs-popup/dist/index.css';
 

@@ -8,6 +8,7 @@ import {Main} from "Components/Main/Main";
 import {Status} from "Components/Statistic/Status/Status";
 import {Shop} from "Components/Shop/Shop";
 import {OwnElements} from "Components/OwnElements/OwnElements";
+import {Sudoku} from "Components/Sudoku/Sudoku";
 
 const router = createBrowserRouter([
     {
@@ -25,7 +26,13 @@ const router = createBrowserRouter([
     {
         path: '/library',
         element: <OwnElements/>
+    },
+    {
+        path: '/sudoku',
+        element: <Sudoku/>
     }
+
+
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

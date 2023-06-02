@@ -1,11 +1,9 @@
 import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {Game} from "Components/Statistic/Game/Game";
-import {ChangeBackgroundColor} from "Components/Functions/ChangeBackgroundColor";
+import {ChangeBackgroundColor} from "Functions/Hangman/ChangeBackgroundColor";
 import {Header} from "Components/Header/Header";
-import {Reset} from "Components/Statistic/Status/ElementSort/Reset";
-import {Lose} from "Components/Statistic/Status/ElementSort/Lose";
-import {Win} from "Components/Statistic/Status/ElementSort/Win";
+import {Sort} from "Components/Statistic/Status/ElementSort/Sort";
 import './style.css'
 
 export const Status = () => {
@@ -23,9 +21,10 @@ export const Status = () => {
             <Header/>
             {infoGame.length &&
                 <div className='buttons'>
-                    <Win setList={setList}/>
-                    <Lose setList={setList}/>
-                    <Reset setList={setList}/>
+                    <Sort setList={setList} props={'win'}/>
+                    <Sort setList={setList} props={'lose'}/>
+                    <Sort setList={setList} props={'reset'}/>
+
                 </div>
             }
             {infoGame.length ? list?.sort((x, y) => Date.parse(y.time) - Date.parse(x.time)).map(game => <Game

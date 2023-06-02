@@ -1,8 +1,8 @@
 import {useSelector} from "react-redux";
 import {Buy} from "Components/Shop/ShopElements/Buy";
 import {SellElement} from "Components/Shop/ShopElements/SellElement";
-import {SHOP_LIST} from "Components/Constants/Constants";
 import {BlockColorWithName} from "Components/Shop/ShopElements/BlockColorWithName";
+import {SHOP_LIST} from "Constants/hangman";
 
 export const ListElements = () => {
     const boughtElement = JSON.parse(useSelector(state => state.store.boughtElement));

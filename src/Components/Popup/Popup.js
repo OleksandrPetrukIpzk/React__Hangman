@@ -2,7 +2,7 @@ import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Popup from "reactjs-popup";
 import {Link} from "react-router-dom";
-import {MINIMAL_WRONG_COUNT} from "Components/Constants/Constants";
+import {MINIMAL_WRONG_COUNT} from "Constants/hangman";
 
 export const Popups = ({children, secretWord}) => {
     const {color, background} = JSON.parse(useSelector(state => state.store.setStyle));

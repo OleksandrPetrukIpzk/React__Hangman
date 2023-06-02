@@ -1,5 +1,5 @@
 import {useEffect, useRef} from "react";
-import {WRONG_CUBES, MINIMAL_WRONG_COUNT, MAXIMUM_WRONG_COUNT} from "Components/Constants/Constants";
+import {WRONG_CUBES, MINIMAL_WRONG_COUNT, MAXIMUM_WRONG_COUNT} from "Constants/hangman";
 
 export const Canvas = ({wrong}) => {
     const canvasRef = useRef(null);

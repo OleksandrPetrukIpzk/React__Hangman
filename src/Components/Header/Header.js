@@ -5,7 +5,8 @@ export const Header = () =>{
     const coins = useSelector(state => state.store.coins);
     return(
         <div>
-            <Link to='/'>Game</Link>
+            <Link to='/sudoku'>Sudoku</Link>
+            <Link to='/'>Hangman</Link>
             <Link to='/status'>Status</Link>
             <Link to='/shop'>Shop</Link>
             <Link to='/library'>Library</Link>

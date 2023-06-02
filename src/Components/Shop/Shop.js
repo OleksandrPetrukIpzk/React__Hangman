@@ -1,10 +1,9 @@
 import {Header} from "Components/Header/Header";
 import { useSelector} from "react-redux";
 import {useEffect} from "react";
-import {ChangeBackgroundColor} from "Components/Functions/ChangeBackgroundColor";
 import {ListElements} from "Components/Shop/ListElements/ListElements";
 import {Library} from "Components/Shop/Library/Library";
-
+import {ChangeBackgroundColor} from "Functions/Hangman/ChangeBackgroundColor";
 
 export const Shop = () => {
 

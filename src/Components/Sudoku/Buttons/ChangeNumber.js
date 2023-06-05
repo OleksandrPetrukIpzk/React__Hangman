@@ -1,5 +1,5 @@
-import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {changeNumber} from "Functions/Sudoku/changeNumber";
 import {fillStatus} from "Functions/Sudoku/fillStatus";
 
@@ -8,10 +8,14 @@ export const ChangeNumber = ({number, numbers, setNumbers}) => {
     const [status, setStatus] = useState(0);
     const targetState = useSelector(state => state.sudoku.targetState);
     const targetId = useSelector(state => state.sudoku.targetId);
+    const prevState = useSelector(state => state.sudoku.prevState);
     const dispatch = useDispatch();
 
     const addPrevChange = () => {
-        dispatch({type: 'ADD_PREV_CHANGE', id: targetId, number: targetState,})
+        const changedPrevState = [];
+        changedPrevState.push(...prevState);
+        changedPrevState.push({id: targetId, number: targetState})
+        dispatch({type: 'ADD_PREV_CHANGE', payload: changedPrevState});
         changeNumber(numbers, targetId, number, setNumbers);
     }
 

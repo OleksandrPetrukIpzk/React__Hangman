@@ -13,8 +13,8 @@ export const Buttons = ({numbers, setNumbers}) => {
             {numberButton.map(number => <ChangeNumber number={number} setNumbers={setNumbers} numbers={numbers}/>)}
 
             <DeleteElement numbers={numbers} setNumbers={setNumbers}/>
-            <PrevElement setNumbers={setNumbers} numbers={numbers}>Prev</PrevElement>
-            <PrevElement setNumbers={setNumbers} numbers={numbers}>Redo</PrevElement>
+            <PrevElement setNumbers={setNumbers} numbers={numbers} props='prev'/>
+            <PrevElement setNumbers={setNumbers} numbers={numbers} props='redo'/>
             <PromptNumber numbers={numbers} setNumbers={setNumbers}/>
 
         </div>

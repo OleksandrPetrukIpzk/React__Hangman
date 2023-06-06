@@ -1,18 +1,18 @@
-export const validator = (numbers, secondNumbers, y, mathPlus, mathMinus) => {
+export const validator = (numbers, thisNumber, secondNumbers, y, mathPlus, mathMinus) => {
     const arr = [];
-    for (let i = 0; i < 9; i++) {
-        if (!arr?.includes(numbers[i]?.id) && numbers[y]?.number === numbers[i]?.number && numbers[y]?.id !== numbers[i]?.id) {
+    for (let i = 0; i < numbers.length; i++) {
+        if (!arr?.includes(numbers[i]?.id) && thisNumber === numbers[i]?.number && numbers[y]?.id !== numbers[i]?.id) {
             arr.push(numbers[i]?.id);
         }
     }
-    if (numbers[y]?.number === secondNumbers[y + mathPlus]?.number) {
+    if (thisNumber === secondNumbers[y + mathPlus]?.number) {
         arr.push(secondNumbers[y + mathPlus]?.id);
     }
-    if (numbers[y].number === secondNumbers[y - mathMinus]?.number) {
+    if (thisNumber === secondNumbers[y - mathMinus]?.number) {
         arr.push(secondNumbers[y - mathMinus]?.id)
     }
 
-    if (numbers[y]?.number === secondNumbers[y]?.number) {
+    if (thisNumber === secondNumbers[y]?.number) {
         arr.push(secondNumbers[y]?.id)
     }
     if (arr.length > 0) {

@@ -1,5 +1,5 @@
 export const generateRandomNumber = (arr, num) =>{
-    if (Math.ceil(Math.random() * 8) > 7) {
+    if (Math.ceil(Math.random() * 8) > 6) {
         let randomNum = Math.ceil(Math.random() * (8 + 1));
         if (arr.findIndex(element => element === randomNum) !== -1) {
             let isRepeat = true;

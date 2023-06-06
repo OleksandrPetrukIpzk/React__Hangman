@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
-import {Inputs} from "Components/Inputs/Inputs";
-import {Canvas} from "Components/Canvas/Canvas";
+import {Inputs} from "Components/Hangman/Inputs/Inputs";
+import {Canvas} from "Components/Hangman/Canvas/Canvas";
 import {useSelector} from "react-redux";
 import {Popups} from "Components/Popup/Popup";
 import {Header} from "Components/Header/Header";

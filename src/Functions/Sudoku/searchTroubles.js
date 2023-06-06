@@ -7,7 +7,7 @@ export const searchTroubles = (numbers,) => {
     for (let i = 0; i < numbers.length; i++) {
         for (let y = 0; y < 9; y++) {
             if (numbers[i][y].number !== '') {
-              dangerId.push(...checkEveryElement(numbers, i, y))
+              dangerId.push(...checkEveryElement(numbers, i, y, numbers[i][y].number))
             }
         }
     }

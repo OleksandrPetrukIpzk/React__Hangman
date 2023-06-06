@@ -1,4 +1,4 @@
-import {Block} from "Components/Inputs/Block";
+import {Block} from "Components/Hangman/Inputs/Block";
 import './style.css'
 
 export const Inputs = ({secretWord, letter}) => {

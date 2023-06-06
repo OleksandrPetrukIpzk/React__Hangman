@@ -4,7 +4,7 @@ import {hasSimilarElements} from "Functions/Sudoku/hasSimilarElements";
 import {colorTable} from "Functions/Sudoku/colorTable";
 import {Number} from "Components/Sudoku/Table/Number";
 
-export const Table = ({arrTable, idTable, dangerId}) => {
+export const Table = ({arrTable, idTable, dangerId, index}) => {
 
     const targetId = useSelector(state => state.sudoku.targetId);
 
@@ -19,6 +19,6 @@ export const Table = ({arrTable, idTable, dangerId}) => {
     }, [targetId])
 
     return (<div id={idTable} className='main__table'>
-        {arrTable.map(({number, id} = arrTable) => <Number dangerId={dangerId} number={number} id={id} idTable={idTable}/>)}
+        {arrTable.map(({number, id} = arrTable) => <Number dangerId={dangerId} number={number} id={id} idTable={index}/>)}
     </div>)
 }

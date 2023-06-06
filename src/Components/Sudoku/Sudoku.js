@@ -8,12 +8,14 @@ import {searchTroubles} from "Functions/Sudoku/searchTroubles";
 import {generateRandomId} from "Functions/Sudoku/generateRandomId";
 import {START} from "Constants/sudoku";
 import './style.css'
+import {useSelector} from "react-redux";
 
 
 export const Sudoku = () => {
     const [numbers, setNumbers] = useState(START)
     const [dangerId, setDangerId] = useState([]);
     const [isWinGame, setIsWinGame] = useState(false);
+
     useEffect(() => {
 
         setDangerId(searchTroubles(numbers));
@@ -23,15 +25,15 @@ export const Sudoku = () => {
                 setIsWinGame(true);
             }
         }
-    }, [numbers])
+    }, [numbers,])
 
 
     return (<div>
         <Header/>
         {isWinGame && <SudokuPopup/> /**/}
         <div className='main'>
-            {numbers.map((tableNumber) => <Table arrTable={tableNumber} dangerId={dangerId}
-                                                 idTable={generateRandomId()}/>)}
+            {numbers.map((tableNumber, index) => <Table arrTable={tableNumber} dangerId={dangerId}
+                                                 idTable={generateRandomId()} index={index}/>)}
         </div>
         <Buttons numbers={numbers} setNumbers={setNumbers}/>
     </div>)

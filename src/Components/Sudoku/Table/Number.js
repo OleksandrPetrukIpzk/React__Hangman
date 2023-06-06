@@ -9,6 +9,7 @@ export const Number = ({number, id, dangerId, idTable}) => {
     const dispatch = useDispatch();
 
     const changeTargetId = () => {
+        console.log(idTable)
         dispatch({type: 'CHANGE_TARGET', id, payload: number, table: idTable})
     }
     useEffect(() => {

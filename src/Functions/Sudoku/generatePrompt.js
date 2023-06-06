@@ -6,12 +6,13 @@ export const generatePrompt = (numbers, setNumbers, targetId, targetTable) =>{
         return row.map(number => {
             if (number.id === targetId) {
                 let isRandom = true;
-                let prompt = 0;
+                let prompt = 1;
+
                 while (isRandom){
-                    const randomNumber = Math.ceil(Math.random() * (8 + 1));
-                    const indexY = row.findIndex(num => num.id === targetId);
-                    const dangerId = checkEveryElement(numbers, targetTable, indexY);
-                    if(dangerId.length === 0 && row.findIndex(num => num.number === randomNumber) === -1){
+                    const randomNumber = Math.ceil(Math.random() * (8+1))
+                    const indexY = numbers[targetTable].findIndex(num => num.id === targetId);
+                    const dangerId = checkEveryElement(numbers, targetTable, indexY, randomNumber);
+                    if(dangerId.length === 0){
                         prompt = randomNumber;
                         isRandom = false;
                     }

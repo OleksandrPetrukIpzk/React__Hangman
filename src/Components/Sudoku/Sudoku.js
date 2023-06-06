@@ -1,15 +1,14 @@
 import {useEffect, useState} from "react";
-import {useSelector} from "react-redux";
 import {Table} from "Components/Sudoku/Table/Table";
 import {Header} from "Components/Header/Header";
 import {Buttons} from "Components/Sudoku/Buttons/Buttons";
-import {validator} from "Functions/Sudoku/validator";
+import {SudokuPopup} from "Components/Sudoku/SudokuPopup";
 import {isWin} from "Functions/Sudoku/isWin";
-import {SudokuPopup} from "Functions/Sudoku/SudokuPopup";
+import {searchTroubles} from "Functions/Sudoku/searchTroubles";
 import {generateRandomId} from "Functions/Sudoku/generateRandomId";
 import {START} from "Constants/sudoku";
 import './style.css'
-import {searchTroubles} from "Functions/Sudoku/searchTroubles";
+
 
 export const Sudoku = () => {
     const [numbers, setNumbers] = useState(START)

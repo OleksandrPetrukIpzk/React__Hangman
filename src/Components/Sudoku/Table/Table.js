@@ -1,8 +1,8 @@
 import {useEffect} from "react";
 import {useSelector} from "react-redux";
-import {Number} from "Components/Sudoku/Table/Number";
 import {hasSimilarElements} from "Functions/Sudoku/hasSimilarElements";
 import {colorTable} from "Functions/Sudoku/colorTable";
+import {Number} from "Components/Sudoku/Table/Number";
 
 export const Table = ({arrTable, idTable, dangerId}) => {
 

@@ -1,7 +1,7 @@
+import {useEffect} from "react";
 import {Link} from "react-router-dom";
 import Popup from "reactjs-popup";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect} from "react";
 import {REWARD} from "Constants/sudoku";
 
  export const SudokuPopup = () =>{

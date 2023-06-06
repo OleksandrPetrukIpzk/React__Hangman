@@ -2,15 +2,14 @@ import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {colorElement} from "Functions/Sudoku/colorElement";
 
-export const Number = ({number, id, dangerId}) => {
+export const Number = ({number, id, dangerId, idTable}) => {
 
     const targetId = useSelector(state => state.sudoku.targetId);
     const targetState = useSelector(state => state.sudoku.targetState)
     const dispatch = useDispatch();
 
     const changeTargetId = () => {
-        dispatch({type: 'CHANGE_TARGET', id, payload: number})
-
+        dispatch({type: 'CHANGE_TARGET', id, payload: number, table: idTable})
     }
     useEffect(() => {
         if (targetId === id && dangerId.includes(id)) {

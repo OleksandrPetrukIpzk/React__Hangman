@@ -5,6 +5,7 @@ export const PromptNumber = ({numbers, setNumbers}) => {
     const targetState = useSelector(state => state.sudoku.targetState);
     const targetId = useSelector(state => state.sudoku.targetId);
     const prevState = useSelector(state => state.sudoku.prevState);
+    const targetTable = useSelector(state => state.sudoku.targetTable);
     const dispatch = useDispatch();
     const answer = () => {
         if (targetState === '') {
@@ -12,7 +13,7 @@ export const PromptNumber = ({numbers, setNumbers}) => {
             changedPrevState.push(...prevState);
             changedPrevState.push({id: targetId, number: targetState})
             dispatch({type: 'ADD_PREV_CHANGE', payload: changedPrevState});
-            generatePrompt(numbers, setNumbers, targetId);
+            generatePrompt(numbers, setNumbers, targetId, targetTable);
         }
     }
 

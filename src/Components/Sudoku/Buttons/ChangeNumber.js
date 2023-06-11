@@ -9,6 +9,7 @@ export const ChangeNumber = ({number, numbers, setNumbers}) => {
     const targetState = useSelector(state => state.sudoku.targetState);
     const targetId = useSelector(state => state.sudoku.targetId);
     const prevState = useSelector(state => state.sudoku.prevState);
+    const idTable = useSelector(state => state.sudoku.idTable);
     const dispatch = useDispatch();
 
     const addPrevChange = () => {
@@ -16,6 +17,7 @@ export const ChangeNumber = ({number, numbers, setNumbers}) => {
         changedPrevState.push(...prevState);
         changedPrevState.push({id: targetId, number: targetState})
         dispatch({type: 'ADD_PREV_CHANGE', payload: changedPrevState});
+        dispatch({type: 'CHANGE_TARGET', id: targetId, payload: number, table: idTable});
         changeNumber(numbers, targetId, number, setNumbers);
     }
 

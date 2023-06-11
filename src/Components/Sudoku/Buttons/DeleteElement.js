@@ -5,6 +5,7 @@ export const DeleteElement = ({numbers, setNumbers}) =>{
     const targetId = useSelector(state => state.sudoku.targetId);
     const targetState = useSelector(state => state.sudoku.targetState);
     const prevState = useSelector(state => state.sudoku.prevState);
+    const idTable = useSelector(state => state.sudoku.idTable);
     const dispatch = useDispatch();
 
     const deleteElement = () =>{
@@ -12,6 +13,7 @@ export const DeleteElement = ({numbers, setNumbers}) =>{
         changedPrevState.push(...prevState);
         changedPrevState.push({id: targetId, number: targetState})
         dispatch({type: 'ADD_PREV_CHANGE', payload: changedPrevState});
+        dispatch({type: 'CHANGE_TARGET', id: targetId, payload: '', table: idTable});
         if(targetState !== '' && targetId > 0){
             changeNumber(numbers, targetId, '', setNumbers)
         }

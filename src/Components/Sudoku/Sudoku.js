@@ -8,7 +8,6 @@ import {searchTroubles} from "Functions/Sudoku/searchTroubles";
 import {generateRandomId} from "Functions/Sudoku/generateRandomId";
 import {START} from "Constants/sudoku";
 import './style.css'
-import {useSelector} from "react-redux";
 
 
 export const Sudoku = () => {
@@ -33,7 +32,7 @@ export const Sudoku = () => {
         {isWinGame && <SudokuPopup/> /**/}
         <div className='main'>
             {numbers.map((tableNumber, index) => <Table arrTable={tableNumber} dangerId={dangerId}
-                                                 idTable={generateRandomId()} index={index}/>)}
+                                                 idTable={generateRandomId()} index={index} numbers={numbers}/>)}
         </div>
         <Buttons numbers={numbers} setNumbers={setNumbers}/>
     </div>)

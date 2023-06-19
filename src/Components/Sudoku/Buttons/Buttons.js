@@ -2,6 +2,7 @@ import {ChangeNumber} from "Components/Sudoku/Buttons/ChangeNumber";
 import {DeleteElement} from "Components/Sudoku/Buttons/DeleteElement";
 import {PrevElement} from "Components/Sudoku/Buttons/PrevElement";
 import {PromptNumber} from "Components/Sudoku/Buttons/PromptNumber";
+import {AnswerAllSudoku} from "Components/Sudoku/Buttons/AnswerAllSudoku";
 
 export const Buttons = ({numbers, setNumbers}) => {
 
@@ -16,7 +17,7 @@ export const Buttons = ({numbers, setNumbers}) => {
             <PrevElement setNumbers={setNumbers} numbers={numbers} props='prev'/>
             <PrevElement setNumbers={setNumbers} numbers={numbers} props='redo'/>
             <PromptNumber numbers={numbers} setNumbers={setNumbers}/>
-
+            <AnswerAllSudoku setNumbers={setNumbers}/>
         </div>
     )
 }

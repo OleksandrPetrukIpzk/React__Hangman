@@ -1,4 +1,4 @@
 
-export const colorElement = (id, color) =>{
-    document.getElementById(id).style.background = color;
+export const colorElement = (setStyle, color) =>{
+   setStyle({color: "black", background: color });
 }

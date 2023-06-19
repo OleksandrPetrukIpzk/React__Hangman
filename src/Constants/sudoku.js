@@ -1,4 +1,9 @@
-import {generateRandomNumber} from "Functions/Sudoku/generateRandomNumber";
+import {createSudoku} from "Functions/Sudoku/createSudoku";
+import {generateWhiteListIds} from "Functions/Sudoku/generateWhiteListIds";
+import {standartGenerate} from "Functions/Sudoku/standartGenerate";
+import {mixFirstRowGenerate} from "Functions/Sudoku/mixFirstRowGenerate";
+import {mixLastRowGenerate} from "Functions/Sudoku/mixLastRowGenerate";
+import {mixCentralRowGenerate} from "Functions/Sudoku/mixCentralRowGenerate";
 
 export const ANSWER = [[{id: 1, number: ''}, {id: 2, number: ''}, {id: 3, number: ''}, {id: 4, number: ''}, {
     id: 5,
@@ -51,9 +56,35 @@ export const ANSWER = [[{id: 1, number: ''}, {id: 2, number: ''}, {id: 3, number
 }, {id: 81, number: ''},],
 
 ]
+const typeGenerate = Math.ceil(Math.random() * (4 ));
+console.log(typeGenerate);
+export const READY_SUDOKU = ANSWER.map((row, index) => {
+    switch (typeGenerate) {
+        case 1: {
+            return standartGenerate(index, row);
+        }
+        case 2: {
+            return mixFirstRowGenerate(index, row);
+        }
+        case 3:{
+            return mixLastRowGenerate(index, row);
+        }
+        case 4:{
+            return mixCentralRowGenerate(index, row);
+        }
+        default: break;
+    }
 
-export    const START = ANSWER.map(row => {
-    const arr = [];
-    return row.map(num => generateRandomNumber(arr, num))
+
 })
+
+export const DIFICULTY = 50;
+
+export const ARRIDS = generateWhiteListIds();
+
+export const START = JSON.parse(JSON.stringify(READY_SUDOKU)).map(row => {
+    return row.map(col => createSudoku(col))
+})
+
+
 export const REWARD = 100;

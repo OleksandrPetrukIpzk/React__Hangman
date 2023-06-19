@@ -1,7 +1,7 @@
-import {validator} from "Functions/Sudoku/validator";
 import {checkEveryElement} from "Functions/Sudoku/checkEveryElement";
 
-export const searchTroubles = (numbers,) => {
+export const searchTroubles = (numbers) => {
+
     const dangerId = [];
 
     for (let i = 0; i < numbers.length; i++) {

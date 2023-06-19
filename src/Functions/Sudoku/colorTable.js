@@ -1,4 +1,4 @@
 
-export const colorTable = (idTable, fills) =>{
-    return document.getElementById(idTable).style.border = fills;
+export const colorTable = (setStyleTable, fills) =>{
+    setStyleTable({border: fills});
 }

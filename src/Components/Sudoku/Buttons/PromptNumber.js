@@ -7,6 +7,7 @@ export const PromptNumber = ({numbers, setNumbers}) => {
     const prevState = useSelector(state => state.sudoku.prevState);
     const targetTable = useSelector(state => state.sudoku.targetTable);
     const dispatch = useDispatch();
+
     const answer = () => {
         if (targetState === '') {
             const changedPrevState = [];

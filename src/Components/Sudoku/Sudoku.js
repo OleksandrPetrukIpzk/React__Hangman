@@ -9,22 +9,20 @@ import {generateRandomId} from "Functions/Sudoku/generateRandomId";
 import {START} from "Constants/sudoku";
 import './style.css'
 
-
 export const Sudoku = () => {
-    const [numbers, setNumbers] = useState(START)
+    const [numbers, setNumbers] = useState(START);
     const [dangerId, setDangerId] = useState([]);
     const [isWinGame, setIsWinGame] = useState(false);
 
-    useEffect(() => {
-
+    useEffect(() =>{
         setDangerId(searchTroubles(numbers));
+    },[numbers])
 
-        if (dangerId.length === 0) {
-            if (isWin(numbers)) {
+    useEffect(() => {
+        if (dangerId.length === 0 && isWin(numbers)) {
                 setIsWinGame(true);
-            }
         }
-    }, [numbers,])
+    }, [dangerId])
 
 
     return (<div>

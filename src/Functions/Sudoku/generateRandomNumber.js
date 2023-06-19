@@ -12,7 +12,6 @@ export const generateRandomNumber = (arr, num) =>{
         }
         arr.push(randomNum);
         return {...num, number: randomNum}
-    } else {
-        return num;
     }
+        return num;
 }

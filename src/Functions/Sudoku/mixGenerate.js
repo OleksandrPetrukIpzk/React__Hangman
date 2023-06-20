@@ -1,8 +1,7 @@
-
-export const mixCentralRowGenerate = (index, row) =>{
+export const mixGenerate = (zeroNumber, firstNumber, twoNumber, thirdNumber, fourNumber, fiveNumber, sixNumber, sevenNumber, eightNumber, index, row) => {
     switch (index) {
         case 0: {
-            let startNumber = 1;
+            let startNumber = zeroNumber;
             return row.map(col => {
                 startNumber += 1;
                 if (startNumber === 10) {
@@ -10,10 +9,9 @@ export const mixCentralRowGenerate = (index, row) =>{
                 }
                 return {...col, number: startNumber}
             })
-            break;
         }
         case 1: {
-            let startNumber = 4;
+            let startNumber = firstNumber;
             return row.map(col => {
                 startNumber += 1;
                 if (startNumber === 10) {
@@ -21,10 +19,9 @@ export const mixCentralRowGenerate = (index, row) =>{
                 }
                 return {...col, number: startNumber}
             })
-            break;
         }
         case 2: {
-            let startNumber = 7;
+            let startNumber = twoNumber;
             return row.map(col => {
                 startNumber += 1;
                 if (startNumber === 10) {
@@ -32,10 +29,9 @@ export const mixCentralRowGenerate = (index, row) =>{
                 }
                 return {...col, number: startNumber}
             })
-            break;
         }
         case 3: {
-            let startNumber = 0;
+            let startNumber = thirdNumber;
             return row.map(col => {
                 startNumber += 1;
                 if (startNumber === 10) {
@@ -43,11 +39,9 @@ export const mixCentralRowGenerate = (index, row) =>{
                 }
                 return {...col, number: startNumber}
             })
-
-            break;
         }
         case 4: {
-            let startNumber = 3;
+            let startNumber = fourNumber;
             return row.map(col => {
                 startNumber += 1;
                 if (startNumber === 10) {
@@ -55,11 +49,9 @@ export const mixCentralRowGenerate = (index, row) =>{
                 }
                 return {...col, number: startNumber}
             })
-
-            break;
         }
         case 5: {
-            let startNumber = 6;
+            let startNumber = fiveNumber;
             return row.map(col => {
                 startNumber += 1;
                 if (startNumber === 10) {
@@ -67,11 +59,9 @@ export const mixCentralRowGenerate = (index, row) =>{
                 }
                 return {...col, number: startNumber}
             })
-
-            break;
         }
         case 6: {
-            let startNumber = 2;
+            let startNumber = sixNumber;
             return row.map(col => {
                 startNumber += 1;
                 if (startNumber === 10) {
@@ -79,10 +69,9 @@ export const mixCentralRowGenerate = (index, row) =>{
                 }
                 return {...col, number: startNumber}
             })
-            break;
         }
         case 7: {
-            let startNumber = 5;
+            let startNumber = sevenNumber;
             return row.map(col => {
                 startNumber += 1;
                 if (startNumber === 10) {
@@ -90,10 +79,9 @@ export const mixCentralRowGenerate = (index, row) =>{
                 }
                 return {...col, number: startNumber}
             })
-            break;
         }
         case 8: {
-            let startNumber = 8;
+            let startNumber = eightNumber;
             return row.map(col => {
                 startNumber += 1;
                 if (startNumber === 10) {
@@ -101,7 +89,6 @@ export const mixCentralRowGenerate = (index, row) =>{
                 }
                 return {...col, number: startNumber}
             })
-            break;
         }
         default:
             break

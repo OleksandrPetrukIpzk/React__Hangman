@@ -32,7 +32,7 @@ export const Number = ({number, id, dangerId, idTable, numbers}) => {
                 colorElement(setStyle, 'green')
             }
         }
-    }, [targetId, numbers])
+    }, [targetId, numbers, dangerId])
 
     return (<div id={id} style={style} onClick={changeTargetId} className='main__table__number'>{number} </div>)
 }

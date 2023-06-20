@@ -1,9 +1,5 @@
-import {createSudoku} from "Functions/Sudoku/createSudoku";
-import {generateWhiteListIds} from "Functions/Sudoku/generateWhiteListIds";
-import {standartGenerate} from "Functions/Sudoku/standartGenerate";
-import {mixFirstRowGenerate} from "Functions/Sudoku/mixFirstRowGenerate";
-import {mixLastRowGenerate} from "Functions/Sudoku/mixLastRowGenerate";
-import {mixCentralRowGenerate} from "Functions/Sudoku/mixCentralRowGenerate";
+
+import {mixGenerate} from "Functions/Sudoku/mixGenerate";
 
 export const ANSWER = [[{id: 1, number: ''}, {id: 2, number: ''}, {id: 3, number: ''}, {id: 4, number: ''}, {
     id: 5,
@@ -56,34 +52,38 @@ export const ANSWER = [[{id: 1, number: ''}, {id: 2, number: ''}, {id: 3, number
 }, {id: 81, number: ''},],
 
 ]
-const typeGenerate = Math.ceil(Math.random() * (4 ));
-console.log(typeGenerate);
+const typeGenerate = Math.ceil(Math.random() * 8);
+
 export const READY_SUDOKU = ANSWER.map((row, index) => {
     switch (typeGenerate) {
         case 1: {
-            return standartGenerate(index, row);
+            return mixGenerate(0, 6, 3, 1, 7, 4, 2,8,5, index, row);
         }
         case 2: {
-            return mixFirstRowGenerate(index, row);
+            return mixGenerate(1, 4, 7, 0, 3, 6, 2,5,8, index, row);
         }
         case 3:{
-            return mixLastRowGenerate(index, row);
+            return mixGenerate(1, 4, 7, 0, 3, 6, 2,5,8, index, row);
         }
         case 4:{
-            return mixCentralRowGenerate(index, row);
+            return mixGenerate(2, 5, 8, 0, 3, 6, 1,4,7, index, row);
+        }
+        case 5:{
+            return mixGenerate(6, 3, 0, 4, 7, 1, 5,8,2, index, row);
+        }
+        case 6:{
+            return mixGenerate(3, 0, 6, 7, 4, 1, 8,5,2, index, row);
+        }
+        case 7: {
+            return mixGenerate(6, 3, 0, 7, 4, 1, 8,5,2, index, row);
+        }
+        case 8: {
+            return mixGenerate(3, 6, 0, 4, 7, 1, 5,8,2, index, row);
         }
         default: break;
     }
 
 
-})
-
-export const DIFICULTY = 50;
-
-export const ARRIDS = generateWhiteListIds();
-
-export const START = JSON.parse(JSON.stringify(READY_SUDOKU)).map(row => {
-    return row.map(col => createSudoku(col))
 })
 
 

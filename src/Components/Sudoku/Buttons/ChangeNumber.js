@@ -2,9 +2,8 @@ import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {changeNumber} from "Functions/Sudoku/changeNumber";
 import {fillStatus} from "Functions/Sudoku/fillStatus";
-import {ARRIDS} from "Constants/sudoku";
 
-export const ChangeNumber = ({number, numbers, setNumbers}) => {
+export const ChangeNumber = ({number, numbers, setNumbers, arrWhiteIds}) => {
 
     const [status, setStatus] = useState(0);
     const targetState = useSelector(state => state.sudoku.targetState);
@@ -14,7 +13,7 @@ export const ChangeNumber = ({number, numbers, setNumbers}) => {
     const dispatch = useDispatch();
 
     const addPrevChange = () => {
-        if(!ARRIDS.includes(targetId)){
+        if(!arrWhiteIds.includes(targetId)){
 
         const changedPrevState = [];
         changedPrevState.push(...prevState);

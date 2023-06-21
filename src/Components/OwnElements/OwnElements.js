@@ -6,10 +6,10 @@ import {useSelector} from "react-redux";
 
 export const OwnElements = () =>{
 
-    const setStyle = JSON.parse(useSelector(state => state.store.setStyle));
+    const backgroundStyle = JSON.parse(useSelector(state => state.store.backgroundStyle));
 
     useEffect(()=>{
-        ChangeBackgroundColor(setStyle);
+        ChangeBackgroundColor(backgroundStyle);
     },[])
 
     return(

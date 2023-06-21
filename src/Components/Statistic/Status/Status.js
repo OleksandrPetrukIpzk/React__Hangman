@@ -7,13 +7,13 @@ import {Sort} from "Components/Statistic/Status/ElementSort/Sort";
 import './style.css'
 
 export const Status = () => {
-    const setStyle = JSON.parse(useSelector(state => state.store.setStyle));
+    const backgroundStyle = JSON.parse(useSelector(state => state.store.backgroundStyle));
     const infoGame = useSelector(state => state.statistics.infoGame);
     const [list, setList] = useState(JSON.parse(infoGame));
 
 
     useEffect(() => {
-        ChangeBackgroundColor(setStyle);
+        ChangeBackgroundColor(backgroundStyle);
     }, [])
 
     return (

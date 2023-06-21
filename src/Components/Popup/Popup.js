@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import {MINIMAL_WRONG_COUNT} from "Constants/hangman";
 
 export const Popups = ({children, secretWord}) => {
-    const {color, background} = JSON.parse(useSelector(state => state.store.setStyle));
+    const {color, background} = JSON.parse(useSelector(state => state.store.backgroundStyle));
     const trueAnswer = useSelector(state => state.rules.trueAnswer);
     const infoGame = useSelector(state => state.statistics.infoGame);
     const repeatWord = useSelector(state => state.statistics.repeatWord);

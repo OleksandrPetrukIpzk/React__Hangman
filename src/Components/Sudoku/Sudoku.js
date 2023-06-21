@@ -11,41 +11,42 @@ import {createSudoku} from "Functions/Sudoku/createSudoku";
 import {ChangeBackgroundColor} from "Functions/Hangman/ChangeBackgroundColor";
 import {useSelector} from "react-redux";
 import './style.css'
+import {ZERO} from "Constants/sudoku";
 
 export const Sudoku = () => {
     const [difficult, setDifficult] = useState(0);
     const [arrWhiteIds, setArrWhiteIds] = useState([])
     const [numbers, setNumbers] = useState([]);
-    const [dangerId, setDangerId] = useState([]);
+    const [dangerIds, setDangerIds] = useState([]);
     const [isWinGame, setIsWinGame] = useState(false);
-    const setStyle = JSON.parse(useSelector(state => state.store.setStyle));
+    const backgroundStyle = JSON.parse(useSelector(state => state.store.backgroundStyle));
 
     useEffect(()=>{
         setNumbers(createSudoku(arrWhiteIds));
     },[difficult]);
 
     useEffect(() =>{
-        setDangerId(searchTroubles(numbers));
+        setDangerIds(searchTroubles(numbers));
     },[numbers])
 
     useEffect(() => {
-        if (dangerId.length === 0 && isWin(numbers) && difficult > 0) {
+        if (dangerIds.length === ZERO && isWin(numbers) && difficult > ZERO) {
                 setIsWinGame(true);
         }
-    }, [dangerId])
+    }, [dangerIds])
 
     useEffect(() => {
-        ChangeBackgroundColor(setStyle);
+        ChangeBackgroundColor(backgroundStyle);
     }, [])
 
     return (<div>
         <Header/>
-        {difficult === 0 && <ChoseDifficult setDifficult={setDifficult} setArrWhiteIds={setArrWhiteIds}/>}
-        {(isWinGame && difficult > 0)  && <SudokuPopup/> /**/}
+        {difficult === ZERO && <ChoseDifficult setDifficult={setDifficult} setArrWhiteIds={setArrWhiteIds}/>}
+        {(isWinGame && difficult > ZERO)  && <SudokuPopup/> /**/}
         <div className='main'>
-            {difficult > 0 && numbers?.map((tableNumber, index) => <Table arrTable={tableNumber} dangerId={dangerId}
+            {difficult > ZERO && numbers?.map((tableNumber, index) => <Table arrTable={tableNumber} dangerIds={dangerIds}
                                                                           idTable={generateRandomId()} index={index} numbers={numbers} arrWhiteIds={arrWhiteIds}/>)}
         </div>
-        { difficult > 0 && <Buttons arrWhiteIds={arrWhiteIds} numbers={numbers} setNumbers={setNumbers} />}
+        { difficult > ZERO && <Buttons arrWhiteIds={arrWhiteIds} numbers={numbers} setNumbers={setNumbers} />}
     </div>)
 }

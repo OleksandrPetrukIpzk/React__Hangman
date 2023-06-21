@@ -1,44 +1,44 @@
 import {useDispatch, useSelector} from "react-redux";
+import {ONE} from "Constants/sudoku";
 
 export const PrevElement = ({numbers, setNumbers, props}) => {
 
-    const prevState = useSelector(state => state.sudoku.prevState);
-    const redoState = useSelector(state => state.sudoku.redoState);
+    const prevStates = useSelector(state => state.sudoku.prevStates);
+    const redoStates = useSelector(state => state.sudoku.prevStates);
     const dispatch = useDispatch();
 
     const prevElement = (props) => {
         const state = {};
         let tableId = 0;
         const changedPrevState = [];
-        changedPrevState.push(...prevState);
+        changedPrevState.push(...prevStates);
         const changedRedoState = [];
-        changedRedoState.push(...redoState);
+        changedRedoState.push(...redoStates);
 
         if (props === "prev") {
             const prevNumbers = numbers.map((row, index) => {
                 return row.map(num => {
-                    if (num.id === prevState[prevState.length - 1].id) {
+                    if (num.id === prevStates[prevStates.length - ONE].id) {
                         tableId = index;
                         state.id = num.id;
                         state.number = num.number;
-                        return {...num, number: prevState[prevState.length - 1].number}
+                        return {...num, number: prevStates[prevStates.length - ONE].number}
                     }
                     return num
-
-
                 })
             })
             changedPrevState.pop();
             changedRedoState.push(state);
             setNumbers(prevNumbers);
+
         } else if (props === "redo") {
             const redoNumbers = numbers.map((row, index) => {
                 return row.map(num => {
-                    if (num.id === redoState[redoState.length - 1].id) {
+                    if (num.id === redoStates[redoStates.length - ONE].id) {
                         tableId = index;
                         state.id = num.id;
                         state.number = num.number
-                        return {...num, number: redoState[redoState.length - 1].number}
+                        return {...num, number: redoStates[redoStates.length - ONE].number}
                     }
                     return num
                 })

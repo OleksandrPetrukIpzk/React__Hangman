@@ -1,77 +1,30 @@
-import {validator} from "Functions/Sudoku/validator";
+import {searchIdsRows} from "Functions/Sudoku/searchIdsRows";
+import {searchIdsColumns} from "Functions/Sudoku/searchIdsColumns";
 
 export const checkEveryElement = (numbers, i, y, thisNumber) =>{
-
-    const dangerId = [];
-    if (i <= 2) {
-        if (y <= 2) {
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i + 3], y, 3, -6));
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i + 6], y, 3, -6));
-        }
-        if (y >= 3 && i <= 5) {
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i + 3], y, 3, 3));
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i + 6], y, 3, 3));
-        }
-        if (y >= 6 && y <= 8) {
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i + 3], y, -3, 6));
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i + 6], y, -3, 6));
-        }
+    const dangerIds = [];
+    if(i <= 2){
+        dangerIds.push(...searchIdsRows(numbers, i, y, thisNumber, 0, 3));
     }
-    if (i >= 3 && i <= 5) {
-        if (y <= 2) {
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i + 3], y, 3, -6))
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i - 3], y, 3, -6))
-        }
-        if (y >= 3 && i <= 5) {
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i + 3], y, 3, 3))
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i - 3], y, 3, 3))
-        }
-        if (y >= 6 && y <= 8) {
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i + 3], y, -3, 6))
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i - 3], y, -3, 6))
-        }
+    if(i >= 3 && i <= 5){
+        dangerIds.push(...searchIdsRows(numbers, i, y, thisNumber, 3, 6));
     }
-    if (i >= 6) {
-        if (y <= 2) {
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i - 3], y, 3, -6))
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i - 6], y, 3, -6))
-        }
-        if (y >= 3 && i <= 5) {
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i - 3], y, 3, 3))
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i - 6], y, 3, 3))
-        }
-        if (y >= 6 && y <= 8) {
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i - 3], y, -3, 6))
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i - 6], y, -3, 6))
-        }
+    if(i >= 6){
+        dangerIds.push(...searchIdsRows(numbers, i, y, thisNumber, 6, 9));
     }
     if (i === 0 || i === 3 || i === 6) {
-        if (y === 0 || y === 3 || y === 6) {
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i + 1], y, 1, -2));
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i + 2], y, 1, -2));
-        }
-        if (y === 1 || y === 4 || y === 7) {
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i + 1], y, 1, 1));
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i + 2], y, 1, 1));
-        }
-        if (y === 2 || y === 5 || y === 8) {
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i + 1], y, -1, 2));
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i + 2], y, -1, 2));
-        }
+        dangerIds.push(...searchIdsColumns(numbers, i, y, thisNumber, 0, 7));
     }
     if (i === 1 || i === 4 || i === 7) {
-        if (y === 0 || y === 3 || y === 6) {
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i + 1], y, 1, -2));
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i - 1], y, 1, -2));
-        }
-        if (y === 1 || y === 4 || y === 7) {
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i + 1], y, 1, 1));
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i - 1], y, 1, 1));
-        }
-        if (y === 2 || y === 5 || y === 8) {
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i - 1], y, -1, 2));
-            dangerId.push(...validator(numbers[i], thisNumber, numbers[i + 1], y, -1, 2));
+        dangerIds.push(...searchIdsColumns(numbers, i, y, thisNumber, 1, 8));
+    }
+    if (i === 2 || i === 5 || i === 8) {
+        dangerIds.push(...searchIdsColumns(numbers, i, y, thisNumber, 2, 9));
+    }
+    for(let j = 0; j < 9; j++){
+        if(numbers[i][j].number === thisNumber && numbers[i][j].id !== numbers[i][y].id){
+            dangerIds.push(numbers[i][j].id);
         }
     }
-    return dangerId;
+    return dangerIds
 }

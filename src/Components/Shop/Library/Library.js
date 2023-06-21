@@ -8,17 +8,17 @@ import {ChangeBackgroundColor} from "Functions/Hangman/ChangeBackgroundColor";
 export const Library = () => {
 
     const boughtElement = JSON.parse(useSelector(state => state.store.boughtElement));
-    const setStyle = JSON.parse(useSelector(state => state.store.setStyle));
+    const backgroundStyle = JSON.parse(useSelector(state => state.store.backgroundStyle));
 
     useEffect(() => {
-        ChangeBackgroundColor(setStyle);
-    }, [setStyle])
+        ChangeBackgroundColor(backgroundStyle);
+    }, [backgroundStyle])
 
     return (<div style={{display: 'flex', alignItems: 'center'}}>
         {boughtElement.map(element =>
             <div style={{padding: '10px'}}>
                 <BlockColorWithName element={element}/>
-                {element.name !== setStyle.name && <EquipElement element={element}/>}
+                {element.name !== backgroundStyle.name && <EquipElement element={element}/>}
                 <SellElement element={element}/>
             </div>
         )}

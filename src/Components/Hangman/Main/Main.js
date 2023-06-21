@@ -16,7 +16,7 @@ export const Main = () => {
     const [secretWord] = useState(SECRETS[Math.floor(Math.random() * SECRETS.length)]);
     // UseState need because word rerender after press key
     const [isWrong, setIsWrong] = useState(false);
-    const setStyle = JSON.parse(useSelector(state => state.store.setStyle));
+    const backgroundStyle = JSON.parse(useSelector(state => state.store.backgroundStyle));
 
     useEffect(() => {
         if (Math.round(wrong.length / MINIMAL_WRONG_COUNT) === MAXIMUM_WRONG_NUMBER) {
@@ -31,7 +31,7 @@ export const Main = () => {
     }, [letter])
 
     useEffect(()=>{
-        ChangeBackgroundColor(setStyle);
+        ChangeBackgroundColor(backgroundStyle);
     },[])
 
     return (

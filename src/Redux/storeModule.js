@@ -1,7 +1,7 @@
 const initialState = {
     coins: 0,
     boughtElement: '[]',
-    setStyle: '{}',
+    backgroundStyle: '{}',
 }
 const storeReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -12,7 +12,7 @@ const storeReducer = (state = initialState, action) => {
         case 'ADD_ELEMENT_TO_LIBRARY':
             return {...state, boughtElement: action.payload}
         case 'SET_ACTUAL_STYLE':
-            return {...state, setStyle: action.payload}
+            return {...state, backgroundStyle: action.payload}
         case 'SELL_ELEMENT':
             return {...state, coins: action.payload + state.coins}
         default:

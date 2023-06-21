@@ -88,3 +88,19 @@ export const READY_SUDOKU = ANSWER.map((row, index) => {
 
 
 export const REWARD = 100;
+
+export const NUMBER_BUTTONS = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+export const TWO_CHOSE_BUTTON = 2;
+
+export const FOUR_CHOSE_BUTTON = 4;
+
+export const SIX_CHOSE_BUTTON = 6;
+
+export const NINE_CHOSE_BUTTON = 9;
+
+export const ZERO = 0;
+
+export const EMPTY_STRING = "";
+
+export const ONE = 1;

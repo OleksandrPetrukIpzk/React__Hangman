@@ -3,8 +3,8 @@ const initialState ={
     targetId: 0,
     targetTable: 0,
     targetState: 0,
-    prevState: [],
-    redoState: [],
+    prevStates: [],
+    redoStates: [],
 }
 const sudokuReducer = (state = initialState, action) =>{
     switch (action.type){
@@ -13,9 +13,9 @@ const sudokuReducer = (state = initialState, action) =>{
         case 'CHANGE_TARGET_VALUE':
             return{...state, targetState: action.payload}
         case 'ADD_PREV_CHANGE':
-            return {...state, prevState: action.payload}
+            return {...state, prevStates: action.payload}
         case 'ADD_REDO_CHANGE':
-            return {...state, redoState: action.payload}
+            return {...state, redoStates: action.payload}
         default: return state
     }
 }

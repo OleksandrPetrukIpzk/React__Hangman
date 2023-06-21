@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 
 export const SellElement = ({element}) =>{
-    const {name, price} = element
+    const {name, price} = element;
     const boughtElement = JSON.parse(useSelector(state => state.store.boughtElement));
     const dispatch = useDispatch();
 

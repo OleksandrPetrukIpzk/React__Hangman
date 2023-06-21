@@ -1,4 +1,4 @@
-import {checkEveryElement} from "Functions/Sudoku/checkEveryElement";
+import { checkEveryElement} from "Functions/Sudoku/checkEveryElement";
 
 export const searchTroubles = (numbers) => {
 

@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {colorElement} from "Functions/Sudoku/colorElement";
 
-export const Number = ({number, id, dangerId, idTable, numbers}) => {
+export const Number = ({number, id, dangerIds, idTable, numbers}) => {
 
     const targetId = useSelector(state => state.sudoku.targetId);
     const targetState = useSelector(state => state.sudoku.targetState)
@@ -13,9 +13,9 @@ export const Number = ({number, id, dangerId, idTable, numbers}) => {
     }
 
     useEffect(() => {
-        if (targetId === id && dangerId.includes(id)) {
+        if (targetId === id && dangerIds.includes(id)) {
             colorElement(setStyle, 'orange')
-        } else if (dangerId.includes(id)) {
+        } else if (dangerIds.includes(id)) {
             colorElement(setStyle, 'red')
         } else if (targetId === id) {
             colorElement(setStyle, 'green')
@@ -24,15 +24,15 @@ export const Number = ({number, id, dangerId, idTable, numbers}) => {
         }
         if (targetState === number && number !== '') {
             colorElement(setStyle, 'purple')
-            if (targetId === id && dangerId.includes(id)) {
+            if (targetId === id && dangerIds.includes(id)) {
                 colorElement(setStyle, 'orange')
-            } else if (dangerId.includes(id)) {
+            } else if (dangerIds.includes(id)) {
                 colorElement(setStyle, 'blue')
-            } else if (targetId === id && !dangerId.includes(id)) {
+            } else if (targetId === id && !dangerIds.includes(id)) {
                 colorElement(setStyle, 'green')
             }
         }
-    }, [targetId, numbers, dangerId])
+    }, [targetId, numbers, dangerIds])
 
     return (<div id={id} style={style} onClick={changeTargetId} className='main__table__number'>{number} </div>)
 }

@@ -7,18 +7,18 @@ import {ChangeBackgroundColor} from "Functions/Hangman/ChangeBackgroundColor";
 
 export const Shop = () => {
 
-    const setStyle = JSON.parse(useSelector(state => state.store.setStyle));
+    const backgroundStyle = JSON.parse(useSelector(state => state.store.backgroundStyle));
 
 
     useEffect(() => {
-        ChangeBackgroundColor(setStyle);
-    }, [setStyle]);
+        ChangeBackgroundColor(backgroundStyle);
+    }, [backgroundStyle]);
 
     return (<div>
         <Header/>
         <h1>Store</h1>
         <ListElements/>
-        <h2>Buyed</h2>
+        <h2>Bought</h2>
         <Library/>
     </div>)
 }

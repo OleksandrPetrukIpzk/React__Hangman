@@ -4,7 +4,7 @@ import {ONE} from "Constants/sudoku";
 export const PrevElement = ({numbers, setNumbers, props}) => {
 
     const prevStates = useSelector(state => state.sudoku.prevStates);
-    const redoStates = useSelector(state => state.sudoku.prevStates);
+    const redoStates = useSelector(state => state.sudoku.redoStates);
     const dispatch = useDispatch();
 
     const prevElement = (props) => {
@@ -15,7 +15,7 @@ export const PrevElement = ({numbers, setNumbers, props}) => {
         const changedRedoState = [];
         changedRedoState.push(...redoStates);
 
-        if (props === "prev") {
+        if (props === "prev" && prevStates.length > 0) {
             const prevNumbers = numbers.map((row, index) => {
                 return row.map(num => {
                     if (num.id === prevStates[prevStates.length - ONE].id) {
@@ -31,7 +31,7 @@ export const PrevElement = ({numbers, setNumbers, props}) => {
             changedRedoState.push(state);
             setNumbers(prevNumbers);
 
-        } else if (props === "redo") {
+        } else if (props === "redo" && redoStates.length > 0) {
             const redoNumbers = numbers.map((row, index) => {
                 return row.map(num => {
                     if (num.id === redoStates[redoStates.length - ONE].id) {

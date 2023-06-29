@@ -1,7 +1,7 @@
 import {checkEveryElement} from "Functions/Sudoku/checkEveryElement";
 import {READY_SUDOKU} from "Constants/sudoku";
 
-export const generatePrompt = (numbers, setNumbers, targetId, targetTable) => {
+export const generatePrompt = (numbers, setNumbers, targetId) => {
     if (targetId !== 0) {
         let prompt = 0;
         READY_SUDOKU.map(row=>{
